@@ -1,0 +1,1 @@
+python probe.py --model-name /path/to/model

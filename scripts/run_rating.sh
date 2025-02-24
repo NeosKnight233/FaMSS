@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0,1 python mtfqa_mistral_rating.py --num-gpus 2 --input-dir output/mtfqa/

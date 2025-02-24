@@ -1,0 +1,27 @@
+deepspeed --num_gpus 8 \
+    --num_nodes 2 \
+    --master_port 9500 \
+    --hostfile configs/hostfile \
+    trainer.py \
+    --model_name_or_path "/path/to/model" \
+    --train_file "train.json" \
+    --val_file "val.json" \
+    --data_path "/path/to/data" \
+    --output_dir "/path/to/output" \
+    --num_train_epochs 3 \
+    --model_max_length 2048 \
+    --per_device_train_batch_size 4 \
+    --per_device_eval_batch_size 4 \
+    --gradient_accumulation_steps 2 \
+    --evaluation_strategy "no" \
+    --save_strategy "epoch" \
+    --save_total_limit 2 \
+    --learning_rate 3e-6 \
+    --warmup_steps 2 \
+    --logging_steps 2 \
+    --lr_scheduler_type "cosine" \
+    --report_to "tensorboard" \
+    --gradient_checkpointing True \
+    --deepspeed configs/ds_config.json \
+    --fp16 True \
+    --remove_unused_columns False
